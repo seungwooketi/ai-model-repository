@@ -1,0 +1,117 @@
+{% extends 'layout.html' %} {% block content%}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Model Download API</h1>
+	</div>
+
+	<!-- Content Row -->
+	<div class="row">
+
+		<!-- Content Column -->
+		<div class="col-lg-12 mb-12">
+
+			<!-- Project Card Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">API Documentation</h6>
+				</div>
+				<div class="card-body">
+					<div class="container">
+						<div class="card-body">
+							<p>
+								Each micro-service can use this API to download the model easily from the Model Repository.  This server provides multiple AI models which can classify, predict the future status. 
+								This repository server provides simple API to access and download the <code>right model</code>
+								for a local edge. 
+							</p>
+							<p> This REST API have four types of parameters:
+								<code> model_name, model_version, model_split, and split_number. </code>
+							</p>
+							<div class="card-body">
+								<div class="row">
+									<pre>
+										<code>
+											<div class="col mr-2 bg-gray-300">
+												<h6 class="text-lg font-weight-bold text-primary text-uppercase mb-1">Example</h6>	
+												    <p> This example demonstrates downloading a specific AI model from DECENTER AI model repository.
+												    </p>
+													<ul>
+														<li class="text-gray-800">http://host_address/model_download?model_name=UC4_FaceDetection&model_version=0.1&model_split=Split_No&split_number=0</li>
+													</ul>
+											</div>
+										</code>
+									</pre>
+								</div>
+								<div class="row">
+									<pre>
+										<code>
+											<div class="col mr-2 bg-gray-300">
+												<h6 class="text-lg font-weight-bold text-primary text-uppercase mb-1">1. Base URL</h6>	
+													<div> Base URL is http://hostaddrress/model_download</div>
+													<div class="text-gray-800"><code>Ex) http://182.252.132.39:5000/model_download</code></div>
+											</div>
+										</code>
+									</pre>
+								</div>
+								<div class="row">
+									<pre>
+										<code>
+											<div class="col mr-2 bg-gray-300">
+												<h6 class="text-lg font-weight-bold text-primary text-uppercase mb-1">2. Model Name</h6>	
+													<div> First of all, you need to know the right model name among registered models. </div>
+													<div class="text-gray-800"><code>Ex) model_name=UC4_FaceDetection</code></div>
+											</div>
+										</code>
+									</pre>
+								</div>
+								<div class="row">
+									<pre>
+										<code>
+											<div class="col mr-2 bg-gray-300">
+												<h6 class="text-lg font-weight-bold text-primary text-uppercase mb-1">3. Model Version</h6>	
+													<div> Select a proper version of a specific AI model.</div>
+													<div class="text-gray-800"><code>Ex) model_version=0.1</code></div>
+											</div>
+										</code>
+									</pre>
+								</div>
+								<div class="row">
+									<pre>
+										<code>
+											<div class="col mr-2 bg-gray-300">
+												<h6 class="text-lg font-weight-bold text-primary text-uppercase mb-1">4. Model split information</h6>	
+													<div>There are two options:[Split_No, Split_Yes] for model_split. "Split_No" is a default option.</div>
+													<div class="text-gray-800"><code>Ex) model_split=Split_No</code></div>
+											</div>
+										</code>
+									</pre>
+								</div>
+								<div class="row">
+									<pre>
+										<code>
+											<div class="col mr-2 bg-gray-300">
+												<h6 class="text-lg font-weight-bold text-primary text-uppercase mb-1">5. Split Number</h6>	
+													<div> The split number is required to download one of the unit of the split model set. For non-split models, split_number should always be fixed at zero. </div>
+													<div class="text-gray-800"><code>Ex) split_number=1</code></div>
+											</div>
+										</code>
+									</pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %} 
+{% block script %}
+<style>
+p {
+    background: antiquewhite;
+}
+</style>{% endblock %}

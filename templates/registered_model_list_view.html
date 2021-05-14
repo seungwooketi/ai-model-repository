@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% block content%}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Registered model</h1>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-12 mb-12">
+
+      <!-- Project Card Example -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Models</h6>
+        </div>
+        <div class="card-body">
+         <table id="json_table" class="display" style="width:100%">
+	        <thead>
+	            <tr>
+	                <th>model name</th>
+	                <th>model version</th>
+	                <th>model split</th>
+	                <th>split number</th>
+	                <th>purpose</th>
+	                <th>target</th>
+	                <th>input type</th>
+	                <th>model_format</th>
+	                <th>preferred_computaion_method</th>
+	            </tr>
+	        </thead>
+	        <tfoot>
+	            <tr>
+	                <th>model name</th>
+	                <th>model version</th>
+	                <th>model split</th>
+	                <th>split number</th>
+	                <th>purpose</th>
+	                <th>target</th>
+	                <th>input type</th>
+	                <th>model_format</th>
+	                <th>preferred_computaion_method</th>
+	            </tr>
+	        </tfoot>
+	    </table>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script>
+
+json_data = JSON.parse({{json_model_all|tojson}})
+console.log(json_data)
+$(document).ready(function() {
+	$('#json_table').DataTable( {
+        data:json_data,
+        columns: [
+            { data: 'model.model_name' },
+            { data: 'model.model_version' },
+            { data: 'model.model_split' },
+            { data: 'model.split_number' },
+            { data: 'model.purpose' },
+            { data: 'model.target' },
+            { data: 'model.input_type' },
+            { data: 'model.model_format'},
+            { data: 'model.preferred_computaion_method'}
+        ]
+    } );
+
+	$('.sorting_1').wrapInner("<a href='http://182.252.132.39:5000/model?model_name=VGG16&model_version=[v1.0]&partial_mode=Full&partial_num=0'>")
+} );
+
+
+
+</script>
+<!-- /.container-fluid -->
+{% endblock %}

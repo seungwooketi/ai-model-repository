@@ -1,0 +1,100 @@
+{ 
+   "schema":{ 
+      "model":{ 
+         "type":"object",
+         "title":"Model_information",
+         "properties":{ 
+            "model_name":{ 
+               "type":"string",
+               "required":true,
+               "title":"Model_name *"
+            },
+            "model_version":{ 
+               "type":"number",
+               "required":true,
+               "multipleOf":1.0,
+               "title":"Model_version *",
+               "default":0.1
+            },
+            "model_format":{ 
+               "type":"string",
+               "required":true,
+               "title":"Model_format *",
+               "enum":[ 
+                  "ZIP(HDF5, JSON)",
+                  "ZIP(HDF5, YAML)",
+                  "ZIP(Checkpoint files)",
+                  "ZIP(pickle)",
+                  "ZIP(ONNX)",
+                  "etc"
+               ]
+            },
+            "input_type":{ 
+               "type":"string",
+               "required":true,
+               "title":"Input_type *",
+               "enum":[ 
+                  "image",
+                  "data",
+                  "audio",
+                  "mixed",
+                  "etc."
+               ]
+            },
+            "purpose":{ 
+               "type":"string",
+               "title":"Purpose",
+               "enum":[ 
+                  "detection",
+                  "verification",
+                  "data_analysis",
+                  "feature extraction",
+                  "classification",
+                  "etc."
+               ]
+            },
+            "target":{ 
+               "type":"string",
+               "title":"Target",
+               "enum":[ 
+                  "member",
+                  "face",
+                  "human",
+                  "obstacle",
+                  "multiple objects",
+                  "etc."
+               ]
+            },
+            "preferred_computaion_method":{ 
+               "type":"string",
+               "title":"Preferred_computaion_method",
+               "enum":[ 
+                  "GPU",
+                  "CPU",
+                  "etc."
+               ]
+            },
+            "tag":{ 
+               "type":"string",
+               "required":false,
+               "title":"Tag"
+            },
+            "model_split":{ 
+               "type":"string",
+               "required":true,
+               "title":"Model_split *",
+               "enum":[ 
+                  "Split_No",
+                  "Split_Yes"
+               ]
+            },
+            "split_number":{ 
+               "type":"number",
+               "required":false,
+               "title":"Split_number (if model_split== Split_No, number is 0)",
+               "default":0
+            }
+         }
+      }
+   }
+}

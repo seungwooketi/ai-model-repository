@@ -1,0 +1,126 @@
+{% extends 'layout.html' %} {% block content %}
+ <link href={{url_for('static', filename="css/bootstrap.min.css")}} rel="stylesheet" type="text/css">
+<!-- Begin Page Content -->
+<div class="container-fluid">
+	<div class='row'>
+		<!-- Pie Chart -->
+		<div class="col-xl-6 col-lg-6">
+			<div class="card shadow mb-4">
+				<!-- Card Header - Dropdown -->
+				<div
+					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+					<h6 class="m-0 font-weight-bold text-primary">Registered AI
+						Model Distribution</h6>
+				</div>
+				<!-- Card Body -->
+				<div class="card-body">
+					<canvas id="myChart" width="400" height="300"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 mb-6">
+			<!-- Illustrations -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Innovation in
+						Artificial Intelligence</h6>
+				</div>
+				<div class="card-body">
+					<div class="text-center">
+						<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+							style="width: 25rem;" src={{url_for(
+							'static', filename="img/decenter-LOGO-final_web-page.svg"
+							)}} alt="">
+					</div>
+					<p>
+						<a target="_blank" rel="nofollow"
+							href="https://www.decenter-project.eu/">DECENTER</a> evolves
+						decentralised Artificial Intelligence models that become possible
+						with a more reactive and flexible resources infrastructure,
+						unlocking a huge potential for innovative applications. Among
+						others, this innovation will address the needs for data locality
+						and time-critical aspects of the Big Data problem.
+					</p>
+					<a target="_blank" rel="nofollow"
+						href="https://www.decenter-project.eu/">Browse DECENTER Main
+						Home Page &rarr;</a>
+				</div>
+			</div>
+			<!-- Approach -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">AI Model
+						Repository</h6>
+				</div>
+				<div class="card-body">
+					<p>This repository stores AI models. Edge is able to connect to this
+						storage and download the proper model remotely to derive AI
+						application.</p>
+					<p class="mb-0"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
+{% block script %} 
+<script src={{url_for('static', filename="js/Chart.js")}}></script>
+<script>
+var ctx = document.getElementById('myChart');
+var json_temp = '{{model_count|tojson}}'
+var model_count = JSON.parse(json_temp)
+console.log(model_count)
+var lable_list =['image','data',' audio','mixed']
+
+var count_list=[0,0,0,0]
+k = 0 
+lable_list.forEach(function(item){
+	if (model_count[item]){
+		count_list[k] = model_count[item];
+	}
+	else{
+		count_list[k] = 0;
+	}	
+	k=k+1
+})
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: lable_list ,
+        datasets: [{
+            label: 'Model Input List',
+            data:count_list ,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+            	barPercentage:0.4,
+            	maxBarThickness:8,
+            	gridLines:{
+            		offsetGridLines:false
+            	},
+                ticks: {
+                    beginAtZero: false
+                }
+            }]
+        }
+    }
+});
+</script>
+
+{% endblock %}

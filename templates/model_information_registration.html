@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block content%}
+<!-- Begin Page Content -->
+	<div class='container'>
+		<form class="information_registration"></form>
+		<div id="res" class="alert"></div>
+	</div>
+{% endblock %}
+{% block script %}
+<script src="/static/js/underscore.js"></script>
+<script src="/static/js/jsv.js"></script>
+<script src="/static/js/jsonform.js"></script>
+<script type="text/javascript">
+
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+readTextFile("/static/schema/model_data_v2.json", function(text){
+    var data = JSON.parse(text);
+    $('.information_registration').jsonForm({
+        schema: data.schema,
+        onSubmit: function (errors, values) {
+        	if (errors) {
+				$('#res').html('<p>I beg your pardon?</p>');
+			} else {
+				console.log(values)
+				var redirect = '/model_upload';
+				//window.location.href = redirect;
+				
+				//model['name'] = values.name;  // survey_id injected from flask
+			    //model['version'] = values.version; // user_ip injected from flask, request.remote_addr
+				//model['split']=values.model_split
+			   
+			    $.ajax({
+			        type : "POST",
+			        url : "/Dir_make_General",
+			        data: JSON.stringify(values),
+			        contentType: 'application/json;charset=UTF-8',
+			        success: function(model_path) {
+			            window.location = ('/model_upload?model_path='+model_path)
+			        }
+			    });			  
+			}
+        }
+    });
+});
+</script>
+{% endblock %}

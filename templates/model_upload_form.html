@@ -1,0 +1,40 @@
+{% extends 'layout.html' %} 
+{% block content%}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Model Download API</h1>
+	</div>
+
+	<!-- Content Row -->
+	<div class="row">
+
+		<!-- Content Column -->
+		<div class="col-lg-12 mb-12">
+
+			<!-- Project Card Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">API Documentation</h6>
+				</div>
+				<div class="card-body">
+					<div class="container">
+						<div class="card-body">
+							<div id="result"></div>
+						    	<form action = "/model_upload_success" method = "post" enctype="multipart/form-data">  
+						        <input type='text' name="folder" value ="{{data}}" readonly="readonly"/> 
+						        <input type="file" name="file" />  
+						        <input type = "submit" value="Upload"/>       
+						        </form> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+						   
+{% endblock %}

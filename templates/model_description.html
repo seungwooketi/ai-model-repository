@@ -1,0 +1,116 @@
+{% extends 'layout.html' %} {% block content%}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Model Description</h1>
+	</div>
+
+	<!-- Content Row -->
+	<div class="row">
+		<div class="col-lg-12 mb-12">
+			<!-- Project Card Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">model information file example</h6>
+				</div>
+				<div class="card-body">
+					<div class="container">
+					 	<h>This repository provides AI model with model specification file named "model_specification.json". 
+					 	This specification file describes a basic information about AI model such as model information, partial information, and train information.</h>
+					 	<h>Example model_specification.json file is shown below.</h>
+					 	<div class="card shadow mb-4">
+					 		<div id="json_example" class="jjson"></div>
+					 	</div>
+					 	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 mb-12">
+			<!-- Project Card Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Model Description Schema (2nd version)</h6>
+				</div>
+				<div class="card-body">
+					<div class="container">
+					 	<h>Model_specification.json file was created based on the structure of the schema below.</h>
+					 	<div class="card shadow mb-4">
+					 		<div id="json_schema" class="jjson"></div>
+					 	</div>
+					 	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 mb-12">
+			<!-- Project Card Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Model Description Schema (1st version)</h6>
+				</div>
+				<div class="card-body">
+					<div class="container">
+					 	<h>Model_specification.json file was created based on the structure of the schema below.</h>
+					 	</h>
+					 	<img src='{{url_for('static', filename='img/schema-1.png')}}'>
+					 	<div><code><a href='/static/schema/model_data_v1.xsd'>detailed script</a></code></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 mb-12">
+			<!-- Project Card Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Schema Explanation (1st version)</h6>
+				</div>
+				<div class="card-body">
+					<div class="container">
+						<iframe src='/schema_description'></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %} 
+{% block script %}
+<style>
+	iframe{
+		width:100%;
+		height:19800px;
+	}
+	span.close {
+    font-size: 13px;
+}
+ul.jjson-container {
+    padding: 20px;
+}
+</style>	
+<script type="text/javascript" src="/static/js/jjsonviewer.js"></script>
+<link rel="stylesheet" href="/static/css/jjsonviewer.css">
+
+<script>
+		$(document).ready(function() {
+			var jjson = {{json_example|tojson|safe}}
+			console.log(jjson)
+			$("#json_example").jJsonViewer(jjson,{expanded: true});
+			
+			var json_schema = {{json_schema|tojson|safe}}
+			$("#json_schema").jJsonViewer(json_schema,{expanded: true});
+		});
+</script>
+
+
+{% endblock %}

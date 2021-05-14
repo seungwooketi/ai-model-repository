@@ -1,0 +1,141 @@
+{% extends 'layout.html' %} {% block content%}
+
+ 
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Registered model</h1>
+	</div>
+
+	<!-- Content Row -->
+	<div class="row">
+
+		<!-- Content Column -->
+		<div class="col-lg-12 mb-12">
+
+			<!-- Project Card Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Repository
+						Structure Example</h6>
+				</div>
+				<div class="card-body">
+					<div class="container">
+						<div>
+							<ul class="file-tree">
+								<li><a href="#">Yolo_v3</a>
+									<ul>
+										<li><a href="#">Full</a>
+											<ul>
+												<li><a href="#">[v1.0]</a>
+													<ul>
+														<li><a href="#">files</a>
+															<ul>
+																<li><a href="#link5">coco.names</a></li>
+																<li><a href="#link6">yolo_anchers.txt</a></li>
+																<li><a href="#link7">yolov3.ckpt.data-00000-of-00001</a></li>
+																<li><a href="#link8">yolov3.ckpt.index</a></li>
+																<li><a href="#link8">yolov3.ckpt.meta</a></li>
+															</ul></li>
+														<li><a href="#">model_specification.json</a></li>
+														<li><a href="#">model.zip</a></li>
+													</ul></li>
+													<li><a href="#">[v1.1]</a>
+													<ul>
+														<li><a href="#">files</a>
+															<ul>
+																<li><a href="#link5">coco.names</a></li>
+																<li><a href="#link6">yolo_anchers.txt</a></li>
+																<li><a href="#link7">yolov3.ckpt.data-00000-of-00001</a></li>
+																<li><a href="#link8">yolov3.ckpt.index</a></li>
+																<li><a href="#link8">yolov3.ckpt.meta</a></li>
+															</ul></li>
+														<li><a href="#">model_specification.json</a></li>
+														<li><a href="#">model.zip</a></li>
+													</ul></li>
+											</ul></li>
+									</ul></li>
+								<li><a href="#">VGG16</a>
+									<ul>
+										<li><a href="#">Full</a>
+											<ul>
+												<li><a href="#">[v1.0]</a>
+													<ul>
+														<li><a href="#">files</a>
+															<ul>
+																<li><a href="#link5">vgg_16.ckpt</a></li>
+															</ul></li>
+														<li><a href="#">model_specification.json</a></li>
+														<li><a href="#">model.zip</a></li>
+													</ul></li>
+													<li><a href="#">[v1.1]</a>
+														<ul>
+															<li><a href="#">files</a>
+																<ul>
+																	<li><a href="#link5">vgg_16.ckpt</a></li>
+																</ul></li>
+															<li><a href="#">model_specification.json</a></li>
+															<li><a href="#">model.zip</a></li>
+														</ul>
+													</li>
+											</ul></li>
+											<li><a href="#">Partial</a>
+											<ul>
+												<li><a href="#">[v1.0]
+													<ul>
+														<li><a href="#">p1</a>
+															<ul>
+																<li><a href="#">files</a>
+																	<ul>
+																		<li><a href="#link5">vgg_16.ckpt</a></li>
+																	</ul></li>
+																<li><a href="#">model_specification.json</a></li>
+																<li><a href="#">model.zip</a></li>
+															</ul>
+														</li>
+														<li><a href="#">p2</a>
+															<ul>
+																<li><a href="#">files</a>
+																	<ul>
+																		<li><a href="#link5">vgg_16.ckpt</a></li>
+																	</ul></li>
+																<li><a href="#">model_specification.json</a></li>
+																<li><a href="#">model.zip</a></li>
+															</ul>
+														</li>
+													</ul>
+												</a>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %} 
+{% block script %}
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href={{url_for(
+	'static', filename="file-explore/css/file-explore.css"
+	)}} rel="stylesheet" type="text/css">
+<script src={{url_for(
+	'static', filename="file-explore/js/file-explore.js")}}></script>
+
+<script>
+	$(document).ready(function() {
+		$(".file-tree").filetree({
+			collapsed : true,
+		});
+	});
+</script>
+
+{% endblock %}
