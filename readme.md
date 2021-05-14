@@ -8,7 +8,7 @@ The developer uploads AI model data to let any microservice access this intellig
 
 ## 1.2 How to use the AI model repository
 
-We firstly installed this into the private server. Any developer who wants to upload their models or find the proper model can use this repository by visiting http://182.252.132.39:5000/home
+We firstly installed this into the private server. Any developer who wants to upload their models or find the proper model can use this repository by visiting http://localhost:5000/home
 
 ## 2. The main menu of AI model repository
 ### Repository structure ###
@@ -46,7 +46,7 @@ When you register an AI model, you can easily upload the AI ​​model through 
 This page shows how to download the proper model. Each micro-service can use this API to download the model easily from the Model Repository. This server provides multiple AI models which can classify, predict the future status. This repository server provides simple API to access and download the right model for a local edge. This REST API have four types of parameters: model_name, model_version, model_split, and split_number.
 
 ```
- - example:http://182.252.132.39:5000/model_download?model_name=UC4_FaceDetection&model_version=0.1&model_split=Split_No&split_number=0
+ - example:http://localhost:5000/model_download?model_name=UC4_FaceDetection&model_version=0.1&model_split=Split_No&split_number=0
 ```
 ## 2.2 FL model manager
 
