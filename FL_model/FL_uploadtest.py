@@ -7,8 +7,7 @@ Created on Mar 3, 2020
 from FL_util import FL_model 
 
 
-repository_address ='http://182.252.132.39:5000/'
-#repository_address ='http://0.0.0.0:8080/'
+repository_address ='server address'
 
 """
 #Define model information including model name, model version, and model location.
